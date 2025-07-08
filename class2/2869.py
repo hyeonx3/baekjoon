@@ -1,6 +1,8 @@
-A,B,V=map(int,input().split())
+A, B, V = map(int, input().split())
 
-for i in range(V):
-    if (A-B)*i +A >=V:
-        print(i+1)
-        break
+if A >= V:
+    print(1)
+else:
+    day = A - B
+    temp = (V - A + day - 1) // day 
+    print(temp + 1)

@@ -1,19 +1,15 @@
+from itertools import combinations
+
 N,M=map(int,input().split())
-numlist=list(map(int,input().split()))
-min=0
+cards=list(map(int,input().split()))
 
-def is_blackjack(num,cards,pick,min):
-    if num==3:
-        pick=[]
+best=0
+for comb in combinations(cards,3):
+    s=sum(comb)
+    if s<=M:
+        best=max(best,s)
 
-        
-    for i in cards:
-        pick.append(i)
-        if sum(pick)<=M:
-            is_blackjack(num-1,cards.pop(i),pick,min)
-            if num==0:
-                if sum(pick)<=M and sum(pick)>=min:
-                    min=sum(pick)
+print(best)
 
-is_blackjack(3,numlist,[],min)
-print(min)
+
+#경우의 수가 그렇게 크지 않아 그냥 brute-force로 접근해도 무리 없음
